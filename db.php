@@ -1,25 +1,11 @@
 <?php
-require 'config.php';
+$host = '127.0.0.1';
+$user = 'root';
+$pass = 'g!g0rigin@1s!';
+$dbname = 'chatroom';
 
-$conn = new mysqli("127.0.0.1", "root", "g!g0rigin@1s!", "chatroom");
+$conn = new mysqli($host, $user, $pass, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
-    die("❌ Database Connection Failed: " . $conn->connect_error);
-} else {
-    echo "✅ Database Connected Successfully!";
+    die('Database Connection Failed: '.$conn->connect_error);
 }
-?>
-
-
-
-<?php
-require 'config.php';
-
-$conn = new mysqli("127.0.0.1", "root", "g!g0rigin@1s!", "chatroom");
-
-// Check connection
-if ($conn->connect_error) {
-    die("Database Connection Failed: " . $conn->connect_error);
-}
-?>
