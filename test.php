@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<!-- PHP connection to MySQL code here -->
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +10,17 @@
 </head>
 
 <body>
-    <div class="chat-container">
+
+    <h1>hello test</h1> -->
+    <!-- Inject PHP here -->
+
+    <!-- <input type="text" class="form-control" id="source-edit" placeholder="Enter Source" required >
+    <button type="button">
+        Enter
+    </button> -->
+
+<!-- before class code -->
+    <!-- <div class="chat-container">
         <h2>Simple Chat</h2>
         <div id="chatbox">
 
@@ -61,6 +73,6 @@
         loadMessages();
         setInterval(loadMessages, 2000);
         window.onload = loadMessages;
-    </script>
-</body>
-</html>
+    </script> -->
+<!-- </body>
+</html> -->
