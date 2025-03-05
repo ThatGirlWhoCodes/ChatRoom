@@ -5,7 +5,7 @@ if (isset($_REQUEST["send message"])) {
 $user = 'root';
 $pass = 'g!g0rigin@1s!';
 $dbname = 'Chatroom';
-$server = 'app-design';
+$server = '455-application-design';
 
 //create connection
 $conn = new mysqli($servername, $username, $password);
