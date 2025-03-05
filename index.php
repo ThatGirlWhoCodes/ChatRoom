@@ -50,10 +50,18 @@ $conn-> close();
 </body> 
 
     <div class="chat-box">
-
+    <!-- display message user sent -->
+    <?php while ($row = $result->fetch_assoc()): ?>
+            <div class="chat-message">
+                <strong><?php echo htmlspecialchars($row['name']); ?>:</strong>
+                <p><?php echo nl2br(htmlspecialchars($row['message'])); ?></p>
+                <small><?php echo date("Y-m-d H:i:s", strtotime($row['date_epoch'])); ?></small>
+            </div>
+            <!-- loop until no more messages -->
+        <?php endwhile; ?>
     </div>    
 
-    <form method="POST" action=" "> </form>
+    <form method="POST" action="#"> </form>
     <input type="text" class="form-control" id="source-edit" placeholder="Enter Source" required >
     <input type="text" name="message" placeholder="Type your message..." required>
     <button type="button">
