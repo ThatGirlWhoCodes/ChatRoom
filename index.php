@@ -8,7 +8,7 @@ $dbname = 'Chatroom';
 $server = '455-application-design';
 
 //create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die('Database Connection Failed: '.$conn->connect_error);
@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 echo'Connected Successfully!';
 
 // Do below query to load
-// $query= 'SELECT name, message, date_epoch FROM  message(name, message, date_epoch) values('$name', '$message', '$date-$date_epoch' );';
+ $query= 'SELECT name, message, date_epoch FROM messages ORDER BY date_epoch DESC';
 $result = mysqli_query($conn,$query);
 
 while ($row = mysqli_fetch_array($result)) {
@@ -47,17 +47,17 @@ $conn-> close();
 
 <body>
 
-</body>
+</body> 
 
+    <div class="chat-box">
 
-    <h1>hello test</h1>
-    <!-- Inject PHP here -->
-    
-    
-    <form action=" "> </form>
+    </div>    
+
+    <form method="POST" action=" "> </form>
     <input type="text" class="form-control" id="source-edit" placeholder="Enter Source" required >
+    <input type="text" name="message" placeholder="Type your message..." required>
     <button type="button">
-        Enter
+        Type message here
     </button>
 </body>
 
