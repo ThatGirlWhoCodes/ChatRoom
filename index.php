@@ -30,6 +30,11 @@ while ($row = mysqli_fetch_array($result)) {
     echo "<br>";
 }
 
+
+// while ($row = mysqli_fetch_array($result)) {
+//    echo "Test";
+// }
+
 $conn-> close();
 }
 ?>
@@ -74,24 +79,24 @@ $conn-> close();
 <body>
     <h1>Chat</h1>
     <div class="chat-box">
-    <!-- display message user sent -->
-    <?php while ($row = $result->fetch_assoc()): ?>
-            <div class="chat-message">
-                <strong><?php echo htmlspecialchars($row['name']); ?>:</strong>
-                <p><?php echo nl2br(htmlspecialchars($row['message'])); ?></p>
-                <small><?php echo date("Y-m-d H:i:s", strtotime($row['date_epoch'])); ?></small>
-            </div>
-            <!-- loop until no more messages -->
-        <?php endwhile; ?>
-    </div>  
-    <form method="POST" action="index.php"> 
+        <!-- display message user sent -->
+        blah
+        <?php 
+            mysqli_data_seek($result, 0);
+            while ($row = mysqli_fetch_array($result)) {
+               echo "Test";
+            }
 
-            <label for="name">Name:</label>
-            <input type="text" name="name" class="form-control" id="source-edit" placeholder="Enter your name" required >
+        ?>
+    </div>
+    <form method="POST" action="index.php">
 
-            <label for="message">Name:</label>
-            <input type="text" name="message" placeholder="Type your message..." required>
-            <button type="submit">Submit</button>
+        <label for="name">Name:</label>
+        <input type="text" name="name" class="form-control" id="source-edit" placeholder="Enter your name" required>
+
+        <label for="message">Name:</label>
+        <input type="text" name="message" placeholder="Type your message..." required>
+        <button type="submit">Submit</button>
     </form>
 </body>
 
