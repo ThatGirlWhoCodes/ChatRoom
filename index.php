@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST["send message"])) {
+if (isset($_POST["send-message"])) {
 $url = 'localhost';
 $username = 'root';
 $password = 'g!g0rigin@1s!';
@@ -83,7 +83,7 @@ $conn-> close();
             </div>
             <!-- loop until no more messages -->
         <?php endwhile; ?>
-    </div>    
+    </div>  
     <form method="POST" action="index.php"> 
 
             <label for="name">Name:</label>
