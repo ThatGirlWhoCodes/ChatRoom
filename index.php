@@ -7,7 +7,7 @@ $password = 'g!g0rigin@1s!';
 $dbname = 'Chatroom';
 $server = '455-application-design';
 
-//create connection
+//instantiate connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
@@ -16,8 +16,8 @@ if ($conn->connect_error) {
 echo'Connected Successfully!';
 
 $query = 'SELECT name, message, date_epoch FROM messages ORDER BY date_epoch DESC';
-$result = mysqli_query($conn, $query);
-
+//$result = mysqli_query($conn, $query);
+$result = $conn->query("SELECT * FROM messages ORDER BY date_epoch DESC");
 
 while ($row = mysqli_fetch_array($result)) {
     $_name = $row['name'];
@@ -42,13 +42,34 @@ $conn-> close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Box</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .chat-box {
+            width: 100%;
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .chat-message {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        .chat-message strong {
+            color: #333;
+        }
+        .chat-message small {
+            color: #666;
+        }
+    </style>
 </head>
 
 <body>
-
-</body> 
-    <h1>Hello world!</h1>
+    <h1>Chat</h1>
     <div class="chat-box">
     <!-- display message user sent -->
     <?php while ($row = $result->fetch_assoc()): ?>
@@ -62,11 +83,9 @@ $conn-> close();
     </div>    
 
     <form method="POST" action="#"> 
-            <input type="text" class="form-control" id="source-edit" placeholder="Enter Source" required >
-    <input type="text" name="message" placeholder="Type your message..." required>
-    <button type="button">
-        Type message here
-    </button>
+            <input type="text" name="name" class="form-control" id="source-edit" placeholder="Enter your name" required >
+            <input type="text" name="message" placeholder="Type your message..." required>
+            <button type="button">Submit</button>
     </form>
 </body>
 
