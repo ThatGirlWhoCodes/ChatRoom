@@ -25,6 +25,7 @@ while ($row = mysqli_fetch_array($result)) {
     $_date = $row['date_epoch'];
 
     //make look prettier
+    echo'Hello world';
     echo'<h1>$_name</h1>';
     echo'<h4>$_message</h4>';
     echo'<h6>$_date_epoch</h6>';
