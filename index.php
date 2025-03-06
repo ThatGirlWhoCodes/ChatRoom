@@ -1,39 +1,38 @@
 <!-- MySQL connection -->
 <?php
-if (isset($_REQUEST["send message"])) {
-$url = 'localhost';
+// Database connection parameters
+$server = 'localhost';
 $username = 'root';
 $password = 'g!g0rigin@1s!';
 $dbname = 'chatroom';
-$server= '455-application-design';
 
-//instantiate connection
+// Instantiate connection
 $conn = new mysqli($server, $username, $password, $dbname);
 
+// Check connection
 if ($conn->connect_error) {
     die('Database Connection Failed: '.$conn->connect_error);
 }
-echo'Connected Successfully!';
 
-$query = 'SELECT name, message, date_epoch FROM messages ORDER BY date_epoch DESC';
-//$result = mysqli_query($conn, $query);
-$result = $conn->query("SELECT * FROM messages ORDER BY date_epoch DESC");
+// Fetch messages from database
+$query = "SELECT * FROM messages ORDER BY date_epoch DESC";
+$result = $conn->query($query);
 
-while ($row = mysqli_fetch_array($result)) {
-    $_name = $row['name'];
-    $_message = $row['message'];
-    $_date = $row['date_epoch'];
+// Handle form submission
+if (isset($_POST["send_message"])) {
+    $name = $conn->real_escape_string($_POST["name"]);
+    $message = $conn->real_escape_string($_POST["message"]);
+    $date_epoch = time(); // Use current timestamp
 
-    //make look prettier
-    echo'Hello world';
-    echo'<h1>$_name</h1>';
-    echo'<h4>$_message</h4>';
-    echo'<h6>$_date_epoch</h6>';
-    echo '</br>';
+    $insert_query = "INSERT INTO messages (name, message, date_epoch) VALUES ('$name', '$message', '$date_epoch')";
+    
+    if (!$conn->query($insert_query)) {
+        die("Error inserting message: " . $conn->error);
+    }
 
-}
-
-$conn-> close();
+    // Reload page to show new message
+    header("Location: index.php");
+    exit();
 }
 ?>
 
@@ -48,7 +47,7 @@ $conn-> close();
             font-family: Arial, sans-serif;
             background-color: black;
         }
-        h1{
+        h1 {
             text-align: center;
             color: red;
         }
@@ -66,37 +65,33 @@ $conn-> close();
             padding: 5px;
             border-bottom: 1px solid whitesmoke;
         }
-        .chat-message strong {
-            color: whitesmoke;
-        }
-        .chat-message small {
+        .chat-message strong, .chat-message small {
             color: whitesmoke;
         }
     </style>
 </head>
-
 <body>
     <h1>Chat</h1>
     <div class="chat-box">
-    <!-- display message user sent -->
-    <?php while ($row = $result->fetch_assoc()): ?>
+        <!-- Display messages from the database -->
+        <?php while ($row = $result->fetch_assoc()): ?>
             <div class="chat-message">
                 <strong><?php echo htmlspecialchars($row['name']); ?>:</strong>
                 <p><?php echo nl2br(htmlspecialchars($row['message'])); ?></p>
-                <small><?php echo date("Y-m-d H:i:s", strtotime($row['date_epoch'])); ?></small>
+                <small><?php echo date("Y-m-d H:i:s", $row['date_epoch']); ?></small>
             </div>
-            <!-- loop until no more messages -->
         <?php endwhile; ?>
     </div>    
+
+    <!-- Message form -->
     <form method="POST" action="index.php"> 
+        <label for="name">Name:</label>
+        <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
 
-            <label for="name">Name:</label>
-            <input type="text" name="name" class="form-control" id="source-edit" placeholder="Enter your name" required >
+        <label for="message">Message:</label>
+        <input type="text" name="message" placeholder="Type your message..." required>
 
-            <label for="message">Name:</label>
-            <input type="text" name="message" placeholder="Type your message..." required>
-            <button type="submit">Submit</button>
+        <button type="submit" name="send_message">Submit</button>
     </form>
 </body>
-
-</html> 
+</html>
