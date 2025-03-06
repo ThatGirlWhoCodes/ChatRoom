@@ -1,14 +1,14 @@
 <!-- MySQL connection -->
 <?php
 if (isset($_REQUEST["send message"])) {
-    $url = 'localhost';
+$url = 'localhost';
 $username = 'root';
 $password = 'g!g0rigin@1s!';
 $dbname = 'Chatroom';
-$server = '455-application-design';
+$server= '455-application-design';
 
 //instantiate connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($server, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die('Database Connection Failed: '.$conn->connect_error);
