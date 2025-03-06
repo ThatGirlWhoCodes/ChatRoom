@@ -4,7 +4,7 @@ if (isset($_REQUEST["send message"])) {
 $url = 'localhost';
 $username = 'root';
 $password = 'g!g0rigin@1s!';
-$dbname = 'Chatroom';
+$dbname = 'chatroom';
 $server= '455-application-design';
 
 //instantiate connection
@@ -87,7 +87,7 @@ $conn-> close();
             <!-- loop until no more messages -->
         <?php endwhile; ?>
     </div>    
-    <form method="POST"> 
+    <form method="_POST"> 
             <input type="text" name="name" class="form-control" id="source-edit" placeholder="Enter your name" required >
             <input type="text" name="message" placeholder="Type your message..." required>
             <button type="submit">Submit</button>
