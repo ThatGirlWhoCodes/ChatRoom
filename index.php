@@ -1,5 +1,5 @@
 <?php
-if (isset($_REQUEST["send message"])) {
+if (isset($_POST["send message"])) {
 $url = 'localhost';
 $username = 'root';
 $password = 'g!g0rigin@1s!';
@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 echo'Connected Successfully!';
 
-$query = 'SELECT name, message, date_epoch FROM messages ORDER BY date_epoch DESC';
+$query = "SELECT name, message, date_epoch FROM messages ORDER BY date_epoch DESC";
 //$result = mysqli_query($conn, $query);
 $result = $conn->query("SELECT * FROM messages ORDER BY date_epoch DESC");
 
