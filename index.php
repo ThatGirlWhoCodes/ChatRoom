@@ -49,7 +49,7 @@ $conn-> close();
         }
         h1{
             text-align: center;
-            color: red;
+            color: blue;
         }
         .chat-box {
             width: 90%;
@@ -63,13 +63,13 @@ $conn-> close();
         .chat-message {
             margin-bottom: 10px;
             padding: 5px;
-            border-bottom: 1px solid whitesmoke;
+            border-bottom: 1px solid black;
         }
         .chat-message strong {
-            color: whitesmoke;
+            color: black;
         }
         .chat-message small {
-            color: whitesmoke;
+            color: black;
         }
     </style>
 </head>
