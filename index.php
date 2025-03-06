@@ -24,12 +24,10 @@ while ($row = mysqli_fetch_array($result)) {
     $_date = $row['date_epoch'];
 
     //make look prettier
-    echo'Hello world';
-    echo'<h1>$_name</h1>';
-    echo'<h4>$_message</h4>';
-    echo'<h6>$_date_epoch</h6>';
-    echo '</br>';
-
+    echo"<h1>$_name</h1>";
+    echo"<h4>$_message</h4>";
+    echo"<h6>$_date_epoch</h6>";
+    echo "<br>";
 }
 
 $conn-> close();
@@ -45,7 +43,6 @@ $conn-> close();
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: black;
         }
         h1{
             text-align: center;
@@ -55,7 +52,7 @@ $conn-> close();
             width: 90%;
             height: 300px;
             overflow-y: auto;
-            border: 3px solid whitesmoke;
+            border: 3px solid blue;
             padding: 10px;
             margin-bottom: 10px;
             align-items: center;
