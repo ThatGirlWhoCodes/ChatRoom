@@ -46,6 +46,11 @@ $conn-> close();
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: black;
+        }
+        h1{
+            text-align: center;
+            color: red;
         }
         .chat-box {
             width: 100%;
@@ -58,13 +63,13 @@ $conn-> close();
         .chat-message {
             margin-bottom: 10px;
             padding: 5px;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid whitesmoke;
         }
         .chat-message strong {
-            color: #333;
+            color: whitesmoke;
         }
         .chat-message small {
-            color: #666;
+            color: whitesmoke;
         }
     </style>
 </head>
@@ -82,11 +87,10 @@ $conn-> close();
             <!-- loop until no more messages -->
         <?php endwhile; ?>
     </div>    
-
-    <form method="POST" action="#"> 
+    <form method="POST"> 
             <input type="text" name="name" class="form-control" id="source-edit" placeholder="Enter your name" required >
             <input type="text" name="message" placeholder="Type your message..." required>
-            <button type="button">Submit</button>
+            <button type="submit">Submit</button>
     </form>
 </body>
 
