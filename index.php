@@ -48,7 +48,7 @@ $conn-> close();
 <body>
 
 </body> 
-
+    <h1>Hello world!</h1>
     <div class="chat-box">
     <!-- display message user sent -->
     <?php while ($row = $result->fetch_assoc()): ?>
