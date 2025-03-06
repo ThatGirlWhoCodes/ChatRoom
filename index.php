@@ -82,13 +82,12 @@ $conn-> close();
             </div>
     </div>    
 
-    <form method="POST" action="#"> 
-    <input type="text" class="form-control" id="source-edit" placeholder="Enter Source" required >
+    <form method="POST" action="">
+    <input type="text" name="name" placeholder="Enter your name" required>
     <input type="text" name="message" placeholder="Type your message..." required>
-    <button type="button">
-        Type message here
-    </button>
-    </form>
+    <button type="submit" name="send">Send</button>
+</form>
+
 </body>
 
 </html> 
